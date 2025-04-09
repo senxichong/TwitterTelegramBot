@@ -9,10 +9,14 @@ from telegram.constants import ParseMode
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import tweepy
 
-# 1. 加载环境变量
-load_dotenv()
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
+# 1. 从环境变量中加载配置
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+TWITTER_BEARER_TOKEN = os.environ.get("TWITTER_BEARER_TOKEN")
+
+# 检查环境变量是否正确加载
+if not TELEGRAM_TOKEN or not TWITTER_BEARER_TOKEN:
+    raise EnvironmentError("⚠️ 必须设置 TELEGRAM_BOT_TOKEN 和 TWITTER_BEARER_TOKEN 环境变量！")
+
 
 # 2. 日志配置
 logging.basicConfig(
