@@ -26,8 +26,16 @@ twitter_client = tweepy.Client(bearer_token=TWITTER_BEARER_TOKEN, wait_on_rate_l
 # 4. /start 命令处理
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "👋 欢迎使用 TwitterNewsBot！\n"
-        "使用命令 /twitternews <关键词> 获取 Twitter 上最热门的相关推文。"
+        "👋 欢迎使用 JerryLoveBot！\n"
+        #english version
+        "Welcome to JerryLoveBot!\n"
+        "使用命令 /start 获取帮助信息。\n"
+        #english version
+        "Use the command /start to get help information.\n"
+        "使用命令 /twitternews <关键词> 获取 Twitter 上最热门的相关推文。\n"
+        #english version
+        "Use the command /twitternews <keyword> to get the hottest related tweets on Twitter.\n"
+        
     )
 
 # 5. /twitternews 命令处理
@@ -79,7 +87,15 @@ async def twitternews(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"Error in twitternews: {e}")
         await update.message.reply_text("❌ 获取推文时出错，请稍后重试。")
 
-# 6. 主函数：启动 Bot
+# 6.start 命令处理
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "👋 欢迎使用 JerryLoveBot！\n"
+        "使用命令 /start 获取帮助信息。\n"
+        "使用命令 /twitternews <关键词> 获取 Twitter 上最热门的相关推文。\n"
+    )
+
+# 7. 主函数：启动 Bot
 def main():
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 
