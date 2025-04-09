@@ -22,11 +22,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 设置环境变量
-        run: |
-          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> $GITHUB_ENV
-          echo "TELEGRAM_USERNAME=${{ secrets.TELEGRAM_USERNAME }}" >> $GITHUB_ENV
-          echo "TWITTER_BEARER_TOKEN=${{ secrets.TWITTER_BEARER_TOKEN }}" >> $GITHUB_ENV
-          echo "TWITTER_ACCESS_TOKEN=${{ secrets.TWITTER_ACCESS_TOKEN }}" >> $GITHUB_ENV
+
       - name: 运行机器人
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_USERNAME: ${{ secrets.TELEGRAM_USERNAME }}
+          TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
         run: python main.py
