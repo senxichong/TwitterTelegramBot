@@ -15,7 +15,8 @@ jobs:
 
       - name: 设置 Python 环境
         uses: actions/setup-python@v4
-        with:          python-version: '3.8.20'  # 替换为您的 Python 版本
+        with:
+          python-version: '3.8.20'  # 替换为您的 Python 版本
 
       - name: 安装依赖
         run: |
